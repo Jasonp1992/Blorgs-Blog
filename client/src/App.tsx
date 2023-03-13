@@ -1,18 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
+import Homepage from './components/Homepage';
 
-function App() {
-  const [data, setData] = useState(null)
-
-  useEffect(()=>{
-    fetch('/api')
-      .then((res) => res.json())
-      .then((data) => setData(data.message))
-  }, [])
-
+const App: React.FC = () => {
   return (
     <div className="App">
-      <p>{!data ? "Loading..." : data}</p>
+      <Homepage />
     </div>
   );
 }

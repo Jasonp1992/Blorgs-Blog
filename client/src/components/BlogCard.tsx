@@ -1,14 +1,26 @@
 import React from 'react'
-import sampleImg from "../assets/img/sample-img-01.jpg"
 
-const BlogCard: React.FC = () => {
+interface BlogInfo {
+    id: number;
+    title: string;
+    img: string;
+    date: string;
+    category: string;
+    description: string;
+}
+
+interface Props {
+    blogData: BlogInfo
+}
+
+const BlogCard: React.FC<Props> = ({ blogData }) => {
   return (
     <div className='blog-card'>
-        <img src={ sampleImg } alt='sample pic' className='thumbnail-pic'/>
+        <img src={ blogData.img } alt='sample pic' className='thumbnail-pic'/>
         <div className='blog-card-text'>
-            <h2>Coffee sugar, chicory seasonal espresso barista americano</h2>
-            <p className='date'>JUNE 25, 2020 | MUSIC</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Leo vel fringilla est ullamcorper eget nulla facilisi etiam. <span><a href=''>Read More...</a></span></p>
+            <h2>{ blogData.title }</h2>
+            <p className='date'>{ blogData.date } | { blogData.category.toUpperCase() }</p>
+            <p>{ blogData.description } <span><a href=''>Read More...</a></span></p>
         </div>
     </div>
   )
